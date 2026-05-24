@@ -1,0 +1,122 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# =========================
+# Virtual Environment
+# =========================
+myvenv/
+
+# =========================
+# Jupyter Notebook
+# =========================
+.ipynb_checkpoints/
+*.ipynb
+
+# =========================
+# VS Code / PyCharm
+# =========================
+.vscode/
+.idea/
+*.iml
+
+# =========================
+# Operating System Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+
+# =========================
+# Environment Variables
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# AI / ML Specific
+# =========================
+
+# Model files
+*.h5
+*.hdf5
+*.keras
+*.ckpt
+*.pth
+*.pt
+*.onnx
+*.pb
+*.tflite
+*.weights
+*.joblib
+*.pkl
+*.pickle
+
+# Hugging Face
+.huggingface/
+hf_cache/
+transformers_cache/
+
+# Torch
+torch_cache/
+
+# TensorFlow
+.tf_cache/
+
+# =========================
+# Testing / Coverage
+# =========================
+.pytest_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Docker
+# =========================
+*.pid
+docker-compose.override.yml
+
+# =========================
+# Node (if frontend exists)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# =========================
+# Streamlit / Gradio
+# =========================
+.streamlit/secrets.toml
+gradio_cached_examples/
+
+# =========================
+# Misc
+# =========================
+*.sqlite3
+*.db
