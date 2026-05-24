@@ -1,0 +1,23 @@
+{
+    "M_Hamza_saeed.pdf": {
+        "class": "Resume",
+        "name": "Mobile:       03174711173                                                   LinkedIn:  www.linkedin.com/in/hamzasaeed7197                         ",
+        "email": "mhamza7197@gmail.com",
+        "phone": "03174711173",
+        "experience_years": null
+    },
+    "Sample_Utility_Bill.pdf": {
+        "class": "Invoice",
+        "invoice_number": null,
+        "date": null,
+        "company": null,
+        "total_amount": null
+    },
+    "wordpress-pdf-invoice-plugin-sample.pdf": {
+        "class": "Invoice",
+        "invoice_number": "INV-3337",
+        "date": null,
+        "company": null,
+        "total_amount": null
+    }
+}
