@@ -18,7 +18,7 @@ def search(query, index, documents):
     query_embedding = model.encode([query])
     distances, indices = index.search(np.array(query_embedding), k=1)
     results = []
-    
+
     for idx in indices[0]:
         results.append(documents[idx]["filename"])
     return results
