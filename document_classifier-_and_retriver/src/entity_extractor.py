@@ -1,23 +1,37 @@
 import re
 
-
 def extract_invoice(text):
 
-    invoice_number = re.search(r'INV[- ]?\d+', text)
+    invoice_number = re.search(
+        r'(?:Invoice\s*#?|INV[- ]?)([A-Za-z0-9-]+)',
+        text,
+        re.IGNORECASE
+    )
 
-    date = re.search(r'\d{4}-\d{2}-\d{2}', text)
+    date = re.search(
+        r'(\d{4}-\d{2}-\d{2})',
+        text
+    )
 
-    company = re.search(r'Company[: ]+(.*)', text)
+    company = re.search(
+        r'Company:\s*(.+)',
+        text,
+        re.IGNORECASE
+    )
 
-    total_amount = re.search(r'Total[: ]+\$?(\d+\.?\d*)', text)
+    total_amount = re.search(
+        r'Total(?:\s+Amount)?\s*:\s*\$?([\d,.]+)',
+        text,
+        re.IGNORECASE
+    )
 
     return {
-        "invoice_number": invoice_number.group() if invoice_number else None,
-        "date": date.group() if date else None,
-        "company": company.group(1) if company else None,
-        "total_amount": total_amount.group(1) if total_amount else None
+        "invoice_number": invoice_number.group(1) if invoice_number else None,
+        "date": date.group(1) if date else None,
+        "company": company.group(1).strip() if company else None,
+        "total_amount": float(total_amount.group(1).replace(",", ""))
+                        if total_amount else None
     }
-
 
 def extract_resume(text):
 

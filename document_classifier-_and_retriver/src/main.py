@@ -11,17 +11,12 @@ from entity_extractor import (
 
 from retrieval import build_index, search
 
-
 DATA_FOLDER = "data"
 
-
 documents = []
-
 results = {}
 
-
 files = list(Path(DATA_FOLDER).glob("*"))
-
 
 for file in files:
 
@@ -34,6 +29,14 @@ for file in files:
         text = extract_txt_text(file)
 
     else:
+        continue
+
+    # Handle corrupted/empty documents
+    if not text or not text.strip():
+        results[file.name] = {
+            "class": "Unclassifiable"
+        }
+        print(f"Skipped invalid document: {file.name}")
         continue
 
     doc_class = classify_document(text)
@@ -56,29 +59,29 @@ for file in files:
         "text": text
     })
 
-
 with open("output/output.json", "w") as f:
     json.dump(results, f, indent=4)
 
-
 print("\noutput.json created successfully")
 
+# Build retrieval index only if valid documents exist
+if len(documents) > 0:
 
-# Semantic Search
+    index, embeddings = build_index(documents)
 
-index, embeddings = build_index(documents)
+    while True:
 
+        query = input("\nEnter search query (or type exit): ")
 
-while True:
+        if query.lower() == "exit":
+            break
 
-    query = input("\nEnter search query (or type exit): ")
+        search_results = search(query, index, documents)
 
-    if query.lower() == "exit":
-        break
+        print("\nRelevant Documents:")
 
-    search_results = search(query, index, documents)
+        for result in search_results:
+            print(result)
 
-    print("\nRelevant Documents:")
-
-    for result in search_results:
-        print(result)
+else:
+    print("No valid documents found for semantic search.")
